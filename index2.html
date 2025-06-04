@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Where It All Began</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Playfair+Display:ital,wght@1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body,
+      html {
+        height: 100%;
+        font-family: "Open Sans", sans-serif;
+        background: linear-gradient(to top, #0a0a23, #2a2a4f);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .clouds {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url("https://i.imgur.com/ceU15GE.png") repeat-x;
+        animation: moveClouds 60s linear infinite;
+        opacity: 0.08;
+      }
+      @keyframes moveClouds {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 10000px 0;
+        }
+      }
+
+      .petal-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+
+        overflow: hidden;
+      }
+      .petal {
+        position: absolute;
+        width: 12px;
+        height: 20px;
+        background: radial-gradient(ellipse at center, #ffcee4 0%, #ff94b8 70%);
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        opacity: 0.7;
+        animation: fall 10s linear infinite;
+      }
+      @keyframes fall {
+        0% {
+          transform: translateY(-30px) rotate(0deg);
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .content {
+        text-align: center;
+        max-width: 650px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(255, 111, 145, 0.4);
+        backdrop-filter: blur(8px);
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .heart {
+        font-size: 3rem;
+        animation: pulse 2s infinite;
+        color: #ff6f91;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.6;
+        }
+      }
+
+      .name-glow {
+        font-family: "Great Vibes", cursive;
+        font-size: 2.8rem;
+        color: #ffb6c1;
+        text-shadow: 0 0 12px #ff6f91;
+        margin-bottom: 1rem;
+        animation: glow 3s infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 8px #ff6f91;
+        }
+        to {
+          text-shadow: 0 0 20px #ff6f91, 0 0 30px #ff6f91;
+        }
+      }
+
+      .message {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+        color: #fdfdfd;
+        animation: fadeInText 3s ease-in-out;
+      }
+
+      @keyframes fadeInText {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      button {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+        background: #ff6f91;
+        border: none;
+        padding: 0.8rem 2.5rem;
+        border-radius: 40px;
+        cursor: pointer;
+        color: white;
+        box-shadow: 0 6px 12px rgba(255, 111, 145, 0.5);
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        animation: fadeIn 4s ease;
+      }
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 20px rgba(255, 111, 145, 0.8);
+      }
+      button:active {
+        transform: translateY(1px);
+        box-shadow: 0 6px 10px rgba(255, 111, 145, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clouds"></div>
+    <div class="petal-container" aria-hidden="true"></div>
+
+    <div class="content">
+      <div class="heart">❤</div>
+      <div class="name-glow">Priya</div>
+      <div class="message">
+        Love is not about perfection.<br />
+        It’s about choosing each other, through the storms,<br />
+        through the silence, through the moments we almost lost ourselves.<br /><br />
+        I made mistakes, but my heart never lost you.<br /><br />
+        Before anything else, this journey is for you —<br />
+        to remind you of us, our laughter, our struggles,<br />
+        and the hope I carry inside me.<br /><br />
+        If your heart still whispers my name,<br />
+        let’s take this journey together.
+      </div>
+      <button onclick="window.location.href='./index3.html'">
+        💖 Let’s Begin
+      </button>
+    </div>
+
+    <script>
+      const petalContainer = document.querySelector(".petal-container");
+      function createPetal() {
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = 8 + Math.random() * 7 + "s";
+        petal.style.opacity = 0.5 + Math.random() * 0.5;
+        petalContainer.appendChild(petal);
+        setTimeout(() => petal.remove(), 15000);
+      }
+      setInterval(createPetal, 300);
+    </script>
+  </body>
+</html>

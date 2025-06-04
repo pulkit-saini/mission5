@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Where It All Began</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Playfair+Display:ital,wght@1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body,
+      html {
+        /* Remove flex centering so page can scroll */
+        height: auto;
+        min-height: 100vh;
+        font-family: "Open Sans", sans-serif;
+        background: linear-gradient(to top, #0a0a23, #2a2a4f);
+        color: #fff;
+        /* Allow normal flow and scrolling */
+        overflow-x: hidden;
+        padding: 2rem 1rem; /* some breathing room on sides */
+      }
+
+      .clouds {
+        position: fixed; /* fixed to viewport */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://i.imgur.com/ceU15GE.png") repeat-x;
+        animation: moveClouds 60s linear infinite;
+        opacity: 0.08;
+        pointer-events: none; /* prevent interaction */
+        z-index: 0;
+      }
+      @keyframes moveClouds {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 10000px 0;
+        }
+      }
+
+      .petal-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .petal {
+        position: absolute;
+        width: 12px;
+        height: 20px;
+        background: radial-gradient(ellipse at center, #ffcee4 0%, #ff94b8 70%);
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        opacity: 0.7;
+        animation: fall 10s linear infinite;
+      }
+      @keyframes fall {
+        0% {
+          transform: translateY(-30px) rotate(0deg);
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .content {
+        position: relative; /* so it stacks above fixed bg */
+        max-width: 650px;
+        margin: 0 auto 4rem; /* center horizontally + margin bottom */
+        background: rgba(255, 255, 255, 0.05);
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(255, 111, 145, 0.4);
+        backdrop-filter: blur(8px);
+        animation: fadeIn 2s ease-in-out;
+        z-index: 2;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .heart {
+        font-size: 3rem;
+        animation: pulse 2s infinite;
+        color: #ff6f91;
+        margin-bottom: 1rem;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.6;
+        }
+      }
+
+      .name-glow {
+        font-family: "Great Vibes", cursive;
+        font-size: 2.8rem;
+        color: #ffb6c1;
+        text-shadow: 0 0 12px #ff6f91;
+        margin-bottom: 1rem;
+        animation: glow 3s infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 8px #ff6f91;
+        }
+        to {
+          text-shadow: 0 0 20px #ff6f91, 0 0 30px #ff6f91;
+        }
+      }
+
+      .message {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+        color: #fdfdfd;
+        animation: fadeInText 3s ease-in-out;
+      }
+
+      @keyframes fadeInText {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      button {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+        background: #ff6f91;
+        border: none;
+        padding: 0.8rem 2.5rem;
+        border-radius: 40px;
+        cursor: pointer;
+        color: white;
+        box-shadow: 0 6px 12px rgba(255, 111, 145, 0.5);
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        animation: fadeIn 4s ease;
+      }
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 20px rgba(255, 111, 145, 0.8);
+      }
+      button:active {
+        transform: translateY(1px);
+        box-shadow: 0 6px 10px rgba(255, 111, 145, 0.6);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 480px) {
+        .content {
+          padding: 2rem 1.2rem;
+          margin-bottom: 3rem;
+        }
+        .heart {
+          font-size: 2.5rem;
+        }
+        .name-glow {
+          font-size: 2.2rem;
+        }
+        .message {
+          font-size: 1.1rem;
+          line-height: 1.6;
+        }
+        button {
+          font-size: 1rem;
+          padding: 0.7rem 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clouds"></div>
+    <div class="petal-container" aria-hidden="true"></div>
+
+    <div class="content">
+      <div class="heart">
+        <div class="name-glow">
+          My <span class="highlight">Pookie</span>,<br /><br />
+        </div>
+      </div>
+
+      <div class="message">
+        There’s something I’ve been carrying in my heart, and today, I want to
+        open up completely — not to defend myself, but to
+        <span class="underline-anim">take responsibility</span>, to express what
+        I truly feel, and to ask, with all the love I have in me… for your
+        <span class="highlight">forgiveness</span>.<br /><br />
+
+        I know I’ve made <span class="highlight">mistakes</span>. I’ve said
+        things I shouldn't have. I’ve acted out of
+        <span class="highlight">fear</span>,
+        <span class="highlight">anger</span>,
+        <span class="highlight">confusion</span> — and sometimes even
+        immaturity. There were moments I hurt you, and looking back, it breaks
+        me. I didn’t mean to push you away. I didn’t mean to let my emotions
+        speak louder than my love. But I know I did. And for that — from the
+        deepest place in my soul —
+        <span class="highlight">I am truly sorry</span>.<br /><br />
+
+        The truth is… I wasn’t prepared for
+        <span class="highlight">distance</span>. I wasn’t ready for the
+        <span class="highlight">silence</span>, the
+        <span class="highlight">space</span>, the change in your attention. I
+        got scared. Scared of losing the bond we built. Scared of being left
+        behind. And instead of holding on with grace, I let my panic take over.
+        I made decisions out of frustration, out of rage, while crying and
+        breaking down quietly — but none of it was right. I see that now.<br /><br />
+
+        I miss <span class="highlight">us</span> — the version of us where love
+        flowed freely, where laughter echoed louder than any doubt, where we
+        stood beside each other not just in words, but in every action.<br /><br />
+
+        I know love isn't always perfect. I know relationships — even the
+        strongest ones — go through storms. But I want to
+        <span class="underline-anim">weather those storms with you</span>, not
+        alone, not in anger… but together.<br /><br />
+
+        I want to make this work. Not just by saying “<span class="highlight"
+          >sorry</span
+        >,” but by growing, healing, and becoming someone who never makes you
+        question your worth, your place, your importance in my life. I want to
+        be a better person — for us, for you.<br /><br />
+
+        But I also know I can’t do this alone. This isn’t a journey I want to
+        walk without your hand in mine. I need your
+        <span class="highlight">support</span>, your
+        <span class="highlight">love</span>, your
+        <span class="highlight">patience</span> — just like I want to offer
+        mine, over and over again.<br /><br />
+
+        Please know — this apology isn’t just for today. It’s for every time I
+        hurt you, every tear that shouldn’t have been there, every silence I
+        caused when I should’ve held you closer. I take full responsibility. And
+        I’m willing to earn your trust back — step by step, word by word, with
+        honesty, love, and consistency.<br /><br />
+
+        <strong>You matter to me</strong> — more than I can ever put into
+        words.<br />
+        I still <span class="highlight">believe in us</span>. I still
+        <span class="underline-anim">see a future</span>.<br />
+        And I still feel that
+        <span class="highlight">quiet, deep love</span> that never left — even
+        through the chaos.<br /><br />
+
+        If your heart has space for my apology, for my efforts, for one more
+        chance — I promise you…
+        <span class="highlight">I’ll make it worth it.</span>
+      </div>
+      <button onclick="window.location.href='./index5.html'">
+        >>>
+      </button>
+    </div>
+
+    <script>
+      const petalContainer = document.querySelector(".petal-container");
+      function createPetal() {
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = 8 + Math.random() * 7 + "s";
+        petal.style.opacity = 0.5 + Math.random() * 0.5;
+        petalContainer.appendChild(petal);
+        setTimeout(() => petal.remove(), 15000);
+      }
+      setInterval(createPetal, 300);
+    </script>
+  </body>
+</html>

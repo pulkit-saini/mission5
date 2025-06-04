@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Next Step</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: linear-gradient(135deg, #1e1e3f, #0a0a1a);
+        color: #fce4ec;
+        font-family: "Open Sans", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        text-align: center;
+        flex-direction: column;
+      }
+
+      .container {
+        max-width: 600px;
+        background: rgba(255 255 255 / 0.06);
+        padding: 3rem 2rem;
+        border-radius: 18px;
+        box-shadow: 0 0 30px #ff6f91cc;
+        backdrop-filter: blur(12px);
+        animation: fadeIn 1.6s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .moon {
+        font-size: 5rem;
+        margin-bottom: 1rem;
+        color: #ffb6c1;
+        animation: glowMoon 3s infinite alternate ease-in-out;
+      }
+
+      @keyframes glowMoon {
+        from {
+          text-shadow: 0 0 15px #ffb6c1, 0 0 30px #ffb6c1;
+        }
+        to {
+          text-shadow: 0 0 30px #ff6f91, 0 0 50px #ff6f91;
+        }
+      }
+
+      h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 3.2rem;
+        margin-bottom: 1rem;
+        color: #ff6f91;
+        text-shadow: 0 0 12px #ff6f91;
+      }
+
+      p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        line-height: 1.5;
+        color: #ffe6f0;
+        user-select: none;
+      }
+
+      .promise {
+        font-style: italic;
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+        color: #ffcce3;
+        user-select: none;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1.6rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        background: #ff6f91;
+        border: none;
+        color: white;
+        font-weight: 600;
+        padding: 0.9rem 2.2rem;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        box-shadow: 0 6px 15px rgba(255, 111, 145, 0.6);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+      }
+      .btn:hover,
+      .btn:focus {
+        background: #ff4f75;
+        transform: translateY(-3px);
+        outline: none;
+        box-shadow: 0 8px 20px rgba(255, 79, 117, 0.8);
+      }
+      .btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 12px rgba(255, 79, 117, 0.7);
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2.6rem;
+        }
+        p,
+        .promise {
+          font-size: 1rem;
+        }
+        .buttons {
+          flex-direction: column;
+        }
+        .btn {
+          width: 100%;
+          max-width: 300px;
+          padding: 1rem;
+        }
+      }
+      .clouds {
+        position: fixed; /* fixed to viewport */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://i.imgur.com/ceU15GE.png") repeat-x;
+        animation: moveClouds 60s linear infinite;
+        opacity: 0.08;
+        pointer-events: none; /* prevent interaction */
+        z-index: 0;
+      }
+      @keyframes moveClouds {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 10000px 0;
+        }
+      }
+
+      .petal-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .petal {
+        position: absolute;
+        width: 12px;
+        height: 20px;
+        background: radial-gradient(ellipse at center, #ffcee4 0%, #ff94b8 70%);
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        opacity: 0.7;
+        animation: fall 10s linear infinite;
+      }
+      @keyframes fall {
+        0% {
+          transform: translateY(-30px) rotate(0deg);
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clouds"></div>
+    <div class="petal-container" aria-hidden="true"></div>
+    <main
+      class="container"
+      role="main"
+      aria-label="Closing message and next steps"
+    >
+      <div class="moon" aria-hidden="true">🌙</div>
+      <h1>
+        This isn’t the end.<br />Just the beginning of something stronger.
+      </h1>
+      <p class="promise">
+        If you choose to walk this road again, I’ll hold your hand with all my
+        heart.
+      </p>
+
+      <div class="buttons">
+        <a
+          href="https://wa.me/+919639409264"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn"
+          aria-label="Message me on WhatsApp"
+          >Message me</a
+        >
+      
+        <a href="tel:+8433403062" class="btn" aria-label="Call me"
+          >Let’s talk…</a
+        >
+      </div>
+    </main>
+  </body>
+
+  <script>
+      const petalContainer = document.querySelector(".petal-container");
+      function createPetal() {
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = 8 + Math.random() * 7 + "s";
+        petal.style.opacity = 0.5 + Math.random() * 0.5;
+        petalContainer.appendChild(petal);
+        setTimeout(() => petal.remove(), 15000);
+      }
+      setInterval(createPetal, 300);
+    </script>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Journey Together</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Playfair+Display:ital,wght@1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        background: linear-gradient(to top, #0a0a23, #2a2a4f);
+        color: white;
+        min-height: 100vh;
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: #ffb6c1;
+        text-align: center;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 1000px;
+      }
+      .petal-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+
+        overflow: hidden;
+      }
+      .petal {
+        position: absolute;
+        width: 12px;
+        height: 20px;
+        background: radial-gradient(ellipse at center, #ffcee4 0%, #ff94b8 70%);
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        opacity: 0.7;
+        animation: fall 10s linear infinite;
+      }
+      @keyframes fall {
+        0% {
+          transform: translateY(-30px) rotate(0deg);
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 0 20px rgba(255, 111, 145, 0.3);
+        backdrop-filter: blur(6px);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        color: #ff9db8;
+        margin-bottom: 0.8rem;
+      }
+
+      .card .content {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #fefefe;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+
+      .card.open .content {
+        max-height: 500px;
+        margin-top: 1rem;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(255, 111, 145, 0.6);
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 2rem;
+        }
+      }
+
+      button {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+        background: #ff6f91;
+        border: none;
+        padding: 0.8rem 2.5rem;
+        border-radius: 40px;
+        cursor: pointer;
+        color: white;
+        box-shadow: 0 6px 12px rgba(255, 111, 145, 0.5);
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        animation: fadeIn 4s ease;
+      }
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 20px rgba(255, 111, 145, 0.8);
+      }
+      button:active {
+        transform: translateY(1px);
+        box-shadow: 0 6px 10px rgba(255, 111, 145, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clouds"></div>
+    <div class="petal-container" aria-hidden="true"></div>
+
+    <h1>Our Journey Together 💫</h1>
+
+    <div class="timeline">
+      <div class="card" onclick="toggleCard(this)">
+        <h3>📍 The First Hello</h3>
+        <div class="content">
+          I still remember the first message you sent. What started as a simple
+          conversation lasted hours… and it felt like home. It was the kind of
+          connection I never knew I needed — soft, unexpected, and real.
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <h3>🌙 Late-Night Talks</h3>
+        <div class="content">
+          You had to leave for a ritual that night… but even then, I waited for
+          our next talk like a kid waiting for magic. From the very start, you
+          felt like comfort.
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <h3>🔄 The Fights & Faith</h3>
+        <div class="content">
+          We stumbled, we broke, we went silent… but we always came back. That’s
+          what made it real — choosing to stay, to try, again and again.
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <h3>🎂 Your Birthday</h3>
+        <div class="content">
+          Even though we were fighting, I waited for midnight to wish you. My
+          words were few, but my heart was full. That day, I knew — I wanted to
+          protect your smile forever.
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <h3>💬 The Turning Point</h3>
+        <div class="content">
+          On the way home, we talked and cleared the air. I told you, “I’ll stay
+          close no matter where this leads.” That changed everything. I started
+          truly falling for you.
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <h3>📸 The Reveal</h3>
+        <div class="content">
+          I sent my picture, thinking it might be goodbye. But you didn’t pull
+          away. You stayed. And I saw the beauty of your heart, your acceptance,
+          your kindness.
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <h3>🌃 Kolkata Nights</h3>
+        <div class="content">
+          During your time in Kolkata, everything bloomed — deep talks,
+          late-night calls, laughter. It was the peak of us. And yes, I had
+          already fallen in love.
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <h3>🖥️ Online Class Days</h3>
+        <div class="content">
+          We used to spend the whole day together on video call — watching each
+          other, laughing at the silliest things, learning side by side. Those
+          were such pure days — simple yet filled with so much love. Even while
+          studying, we found joy… in each other’s company. And that New Year’s
+          night — I remember everything. The way we welcomed the new year
+          together felt like a quiet promise. A moment of love wrapped in
+          warmth, innocence, and togetherness.
+        </div>
+      </div>
+
+      <div class="card" onclick="toggleCard(this)">
+        <h3>♾️ Now & Always</h3>
+        <div class="content">
+          You’ve become my constant — my light, my home. I know the past two
+          months were tough. But we have a history of coming back stronger.
+          Maybe it was our test. And I think… we passed. This isn’t just a
+          story. It’s the start of forever.
+        </div>
+      </div>
+    </div>
+
+    <br />
+    <button onclick="window.location.href='./index4.html'">>>></button>
+
+    <script>
+      function toggleCard(card) {
+        card.classList.toggle("open");
+      }
+
+      const petalContainer = document.querySelector(".petal-container");
+      function createPetal() {
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = 8 + Math.random() * 7 + "s";
+        petal.style.opacity = 0.5 + Math.random() * 0.5;
+        petalContainer.appendChild(petal);
+        setTimeout(() => petal.remove(), 15000);
+      }
+      setInterval(createPetal, 300);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Why You’re Special</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body,
+      html {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #2a2a4f, #0a0a23);
+        color: #fdfdfd;
+        font-family: "Open Sans", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 3rem 1rem 5rem;
+      }
+
+      .container {
+        max-width: 720px;
+        background: rgba(255 255 255 / 0.05);
+        padding: 2.5rem 2rem;
+        border-radius: 15px;
+        box-shadow: 0 0 40px rgba(255, 111, 145, 0.4);
+        backdrop-filter: blur(10px);
+        animation: fadeIn 1.5s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .clouds {
+        position: fixed; /* fixed to viewport */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://i.imgur.com/ceU15GE.png") repeat-x;
+        animation: moveClouds 60s linear infinite;
+        opacity: 0.08;
+        pointer-events: none; /* prevent interaction */
+        z-index: 0;
+      }
+      @keyframes moveClouds {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 10000px 0;
+        }
+      }
+
+      .petal-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .petal {
+        position: absolute;
+        width: 12px;
+        height: 20px;
+        background: radial-gradient(ellipse at center, #ffcee4 0%, #ff94b8 70%);
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        opacity: 0.7;
+        animation: fall 10s linear infinite;
+      }
+      @keyframes fall {
+        0% {
+          transform: translateY(-30px) rotate(0deg);
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .content {
+        position: relative; /* so it stacks above fixed bg */
+        max-width: 650px;
+        margin: 0 auto 4rem; /* center horizontally + margin bottom */
+        background: rgba(255, 255, 255, 0.05);
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(255, 111, 145, 0.4);
+        backdrop-filter: blur(8px);
+        animation: fadeIn 2s ease-in-out;
+        z-index: 2;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #ff6f91;
+        text-shadow: 0 0 12px #ff6f91;
+        animation: glow 3s infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 8px #ff6f91;
+        }
+        to {
+          text-shadow: 0 0 20px #ff6f91, 0 0 30px #ff6f91;
+        }
+      }
+
+      .card {
+        background: rgba(255 255 255 / 0.12);
+        border-radius: 12px;
+        padding: 1.5rem 2rem;
+        margin-bottom: 1.8rem;
+        box-shadow: 0 0 20px rgba(255, 111, 145, 0.3);
+        position: relative;
+        animation: floatUpDown 6s ease-in-out infinite;
+        line-height: 1.6;
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        color: #fefefe;
+        user-select: none;
+      }
+      /* Slight variation in animation delay per card */
+      .card:nth-child(2) {
+        animation-delay: 1.2s;
+      }
+      .card:nth-child(3) {
+        animation-delay: 2.4s;
+      }
+      .card:nth-child(4) {
+        animation-delay: 0.6s;
+      }
+      .card:nth-child(5) {
+        animation-delay: 1.8s;
+      }
+
+      @keyframes floatUpDown {
+        0%,
+        100% {
+          transform: translateY(0);
+          box-shadow: 0 0 20px rgba(255, 111, 145, 0.3);
+        }
+        50% {
+          transform: translateY(-10px);
+          box-shadow: 0 10px 30px rgba(255, 111, 145, 0.5);
+        }
+      }
+
+      .highlight {
+        color: #ffb6c1;
+        font-weight: 700;
+        font-style: italic;
+      }
+
+      button {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+        background: #ff6f91;
+        border: none;
+        padding: 0.8rem 2.5rem;
+        border-radius: 40px;
+        cursor: pointer;
+        color: white;
+        box-shadow: 0 6px 12px rgba(255, 111, 145, 0.5);
+        transition: transform 0.2s ease, box-shadow 0.3s ease;
+        animation: fadeIn 4s ease;
+      }
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 20px rgba(255, 111, 145, 0.8);
+      }
+      button:active {
+        transform: translateY(1px);
+        box-shadow: 0 6px 10px rgba(255, 111, 145, 0.6);
+      }
+
+      /* Responsive */
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2.4rem;
+        }
+        .card {
+          font-size: 1rem;
+          padding: 1.3rem 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="clouds"></div>
+    <div class="petal-container" aria-hidden="true"></div>
+    <main
+      class="container"
+      role="main"
+      aria-label="Reasons why you are special"
+    >
+      <h1>Why You’re Special</h1>
+
+      <section class="card" tabindex="0">
+        <strong><span class="highlight">Your smile heals me </span></strong><br />
+        Whenever the world felt heavy, especially in the middle of the night or
+        during my darkest storms, I would find myself scrolling through our
+        photos. Your “Pookie selfies,” where you
+        smiled so beautifully and genuinely — those smiles were like a quiet
+        light in the darkness. I don’t know why exactly, but seeing your
+        happiness lifted something inside me. Your joy became my refuge, a
+        gentle reminder that even when everything else felt chaotic, your
+        happiness could calm the storm within me. Your smile is a healing balm
+        to my heart, the kind of warmth that nothing else can replace.
+      </section>
+
+      <section class="card" tabindex="0">
+        <strong><span class="highlight">You never gave up on me, even when I didn’t deserve it </span></strong
+        ><br />
+        I know I’ve made mistakes — more than I’d like to admit. I know I wasn’t
+        always easy to be with. And yet, through every moment I stumbled,
+        through every silence I created, through every time you must have felt
+        angry or hurt, you didn’t walk away. You’re still here. I know you’re
+        mad sometimes, and that’s okay — it’s human. But you didn’t give up on
+        me. You stayed, even when it was hard. That alone speaks volumes about
+        your strength, your love, and your heart. I see you. I know you. And
+        that means more to me than words can say.
+      </section>
+
+      <section class="card" tabindex="0">
+        <strong><span class="highlight">You’re home to my heart</span> </strong><br />
+        When the whole world seemed to kick me down, when doors closed and I
+        felt lost and rejected, you were the one who accepted me — fully,
+        without conditions. You saw my flaws and my fears and still chose to
+        hold me close. Your acceptance is the safest place I know. Even now,
+        after everything, you still accept me — the real me — and that’s a gift
+        I cherish deeply. In a world full of uncertainty, your love is the place
+        where I find peace, belonging, and true home.
+      </section>
+
+      <section class="card" tabindex="0">
+        <strong><span class="highlight">You inspire me to be better</span> </strong><br />
+        You challenge me, not by pushing me, but by believing in me. Your faith
+        in what I can become pushes me to grow, to learn, to heal. Because of
+        you, I want to be a man worthy of your love — someone who can stand
+        beside you with strength and tenderness both. You were there pushing me
+        when I doubted myself, when I gave up on me, when I felt unworthy — you
+        were always there, pushing me forward. Even now, you’re guiding me on
+        this spiritual journey, encouraging me to rise higher than I thought
+        possible.
+      </section>
+
+      <section class="card" tabindex="0">
+        <strong><span class="highlight">You’re the calm in my chaos</span> </strong><br />
+        When my thoughts spiral or my emotions run wild, your presence is a
+        grounding force. Just hearing your voice, or knowing you’re there,
+        brings a calmness that nothing else can. You are the quiet harbor I
+        return to when the storms rage inside me.
+      </section>
+
+      <section
+        class="card"
+        tabindex="0"
+        style="text-align: center; font-style: italic; color: #ffcce1"
+      >
+        These are just a few reasons — there are millions more reasons why you
+        are so incredibly special to me.
+      </section>
+
+      <button onclick="window.location.href='./index6.html'">>>></button>
+    </main>
+  </body>
+  <script>
+      const petalContainer = document.querySelector(".petal-container");
+      function createPetal() {
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = 8 + Math.random() * 7 + "s";
+        petal.style.opacity = 0.5 + Math.random() * 0.5;
+        petalContainer.appendChild(petal);
+        setTimeout(() => petal.remove(), 15000);
+      }
+      setInterval(createPetal, 300);
+    </script>
+</html>

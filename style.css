@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(270deg, #1e1e30, #ff758c);
+    animation: bgFlow 10s infinite alternate ease-in-out;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+@keyframes bgFlow {
+    0% { background: #1e1e30; }
+    100% { background: #ff758c; }
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.overlay h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    background: #ff4b4b;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 8px;
+}
+
+button:hover {
+    background: #ff2b2b;
+}
